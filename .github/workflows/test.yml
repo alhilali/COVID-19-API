@@ -1,0 +1,23 @@
+name: Unittest
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  schedule:
+    - cron: '0 */2 * * *'
+jobs:
+  unittests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        redis-version: [5]
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Start redis server
+        uses: supercharge/redis-github-action@1.1.0
+        with:
+          redis-version: ${{ matrix.redis-version }}
+      - run: npm install
+      - run: npm test
