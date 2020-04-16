@@ -4,3 +4,4 @@ json.sqlite
 package-lock.json
 dump.rdb
 yarn.lock
+.config.json
