@@ -54,9 +54,10 @@ app.use('/docs',
 	})
 );
 
-app.use(require('./routes/api_worldometers'));
-app.use(require('./routes/api_historical'));
-app.use(require('./routes/api_jhucsse'));
-app.use(require('./routes/api_deprecated'));
+app.use('/api/', require('./routes/api_worldometers'));
+app.use('/api/', require('./routes/api_historical'));
+app.use('/api/', require('./routes/api_jhucsse'));
+app.use('/api/', require('./routes/api_deprecated'));
+
 
 module.exports = app;
